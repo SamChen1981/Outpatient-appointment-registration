@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medicalsystem.mapper.TBasicinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.medicalsystem.pojo.TBasicinfo" >
+    <id column="basic_id" property="basicId" jdbcType="BIGINT" />
+    <result column="basic_humidity" property="basicHumidity" jdbcType="VARCHAR" />
+    <result column="basic_temperature" property="basicTemperature" jdbcType="VARCHAR" />
+    <result column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="cost_id" property="costId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.medicalsystem.pojo.TBasicinfo" extends="BaseResultMap" >
+    <result column="info" property="info" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    basic_id, basic_humidity, basic_temperature, department_id, cost_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    info
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.medicalsystem.pojo.TBasicinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_basicinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TBasicinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_basicinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_basicinfo
+    where basic_id = #{basicId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_basicinfo
+    where basic_id = #{basicId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.medicalsystem.pojo.TBasicinfoExample" >
+    delete from t_basicinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.medicalsystem.pojo.TBasicinfo" >
+    insert into t_basicinfo (basic_id, basic_humidity, basic_temperature, 
+      department_id, cost_id, info
+      )
+    values (#{basicId,jdbcType=BIGINT}, #{basicHumidity,jdbcType=VARCHAR}, #{basicTemperature,jdbcType=VARCHAR}, 
+      #{departmentId,jdbcType=BIGINT}, #{costId,jdbcType=BIGINT}, #{info,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TBasicinfo" >
+    insert into t_basicinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="basicId != null" >
+        basic_id,
+      </if>
+      <if test="basicHumidity != null" >
+        basic_humidity,
+      </if>
+      <if test="basicTemperature != null" >
+        basic_temperature,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="costId != null" >
+        cost_id,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="basicId != null" >
+        #{basicId,jdbcType=BIGINT},
+      </if>
+      <if test="basicHumidity != null" >
+        #{basicHumidity,jdbcType=VARCHAR},
+      </if>
+      <if test="basicTemperature != null" >
+        #{basicTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="costId != null" >
+        #{costId,jdbcType=BIGINT},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.medicalsystem.pojo.TBasicinfoExample" resultType="java.lang.Integer" >
+    select count(*) from t_basicinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_basicinfo
+    <set >
+      <if test="record.basicId != null" >
+        basic_id = #{record.basicId,jdbcType=BIGINT},
+      </if>
+      <if test="record.basicHumidity != null" >
+        basic_humidity = #{record.basicHumidity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.basicTemperature != null" >
+        basic_temperature = #{record.basicTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentId != null" >
+        department_id = #{record.departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.costId != null" >
+        cost_id = #{record.costId,jdbcType=BIGINT},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_basicinfo
+    set basic_id = #{record.basicId,jdbcType=BIGINT},
+      basic_humidity = #{record.basicHumidity,jdbcType=VARCHAR},
+      basic_temperature = #{record.basicTemperature,jdbcType=VARCHAR},
+      department_id = #{record.departmentId,jdbcType=BIGINT},
+      cost_id = #{record.costId,jdbcType=BIGINT},
+      info = #{record.info,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_basicinfo
+    set basic_id = #{record.basicId,jdbcType=BIGINT},
+      basic_humidity = #{record.basicHumidity,jdbcType=VARCHAR},
+      basic_temperature = #{record.basicTemperature,jdbcType=VARCHAR},
+      department_id = #{record.departmentId,jdbcType=BIGINT},
+      cost_id = #{record.costId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.medicalsystem.pojo.TBasicinfo" >
+    update t_basicinfo
+    <set >
+      <if test="basicHumidity != null" >
+        basic_humidity = #{basicHumidity,jdbcType=VARCHAR},
+      </if>
+      <if test="basicTemperature != null" >
+        basic_temperature = #{basicTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="costId != null" >
+        cost_id = #{costId,jdbcType=BIGINT},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where basic_id = #{basicId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.medicalsystem.pojo.TBasicinfo" >
+    update t_basicinfo
+    set basic_humidity = #{basicHumidity,jdbcType=VARCHAR},
+      basic_temperature = #{basicTemperature,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      cost_id = #{costId,jdbcType=BIGINT},
+      info = #{info,jdbcType=LONGVARCHAR}
+    where basic_id = #{basicId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.medicalsystem.pojo.TBasicinfo" >
+    update t_basicinfo
+    set basic_humidity = #{basicHumidity,jdbcType=VARCHAR},
+      basic_temperature = #{basicTemperature,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      cost_id = #{costId,jdbcType=BIGINT}
+    where basic_id = #{basicId,jdbcType=BIGINT}
+  </update>
+</mapper>

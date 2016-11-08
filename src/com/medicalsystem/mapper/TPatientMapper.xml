@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medicalsystem.mapper.TPatientMapper" >
+  <resultMap id="BaseResultMap" type="com.medicalsystem.pojo.TPatient" >
+    <id column="patient_id" property="patientId" jdbcType="BIGINT" />
+    <result column="patent_name" property="patentName" jdbcType="VARCHAR" />
+    <result column="patient_password" property="patientPassword" jdbcType="VARCHAR" />
+    <result column="patient_birthday" property="patientBirthday" jdbcType="TIMESTAMP" />
+    <result column="patient_sex" property="patientSex" jdbcType="VARCHAR" />
+    <result column="patient_phone" property="patientPhone" jdbcType="BIGINT" />
+    <result column="patient_address" property="patientAddress" jdbcType="VARCHAR" />
+    <result column="patient_nation" property="patientNation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    patient_id, patent_name, patient_password, patient_birthday, patient_sex, patient_phone, 
+    patient_address, patient_nation
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TPatientExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_patient
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_patient
+    where patient_id = #{patientId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_patient
+    where patient_id = #{patientId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.medicalsystem.pojo.TPatientExample" >
+    delete from t_patient
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.medicalsystem.pojo.TPatient" >
+    insert into t_patient (patient_id, patent_name, patient_password, 
+      patient_birthday, patient_sex, patient_phone, 
+      patient_address, patient_nation)
+    values (#{patientId,jdbcType=BIGINT}, #{patentName,jdbcType=VARCHAR}, #{patientPassword,jdbcType=VARCHAR}, 
+      #{patientBirthday,jdbcType=TIMESTAMP}, #{patientSex,jdbcType=VARCHAR}, #{patientPhone,jdbcType=BIGINT}, 
+      #{patientAddress,jdbcType=VARCHAR}, #{patientNation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TPatient" >
+    insert into t_patient
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="patientId != null" >
+        patient_id,
+      </if>
+      <if test="patentName != null" >
+        patent_name,
+      </if>
+      <if test="patientPassword != null" >
+        patient_password,
+      </if>
+      <if test="patientBirthday != null" >
+        patient_birthday,
+      </if>
+      <if test="patientSex != null" >
+        patient_sex,
+      </if>
+      <if test="patientPhone != null" >
+        patient_phone,
+      </if>
+      <if test="patientAddress != null" >
+        patient_address,
+      </if>
+      <if test="patientNation != null" >
+        patient_nation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="patientId != null" >
+        #{patientId,jdbcType=BIGINT},
+      </if>
+      <if test="patentName != null" >
+        #{patentName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPassword != null" >
+        #{patientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="patientBirthday != null" >
+        #{patientBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="patientSex != null" >
+        #{patientSex,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPhone != null" >
+        #{patientPhone,jdbcType=BIGINT},
+      </if>
+      <if test="patientAddress != null" >
+        #{patientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="patientNation != null" >
+        #{patientNation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.medicalsystem.pojo.TPatientExample" resultType="java.lang.Integer" >
+    select count(*) from t_patient
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_patient
+    <set >
+      <if test="record.patientId != null" >
+        patient_id = #{record.patientId,jdbcType=BIGINT},
+      </if>
+      <if test="record.patentName != null" >
+        patent_name = #{record.patentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientPassword != null" >
+        patient_password = #{record.patientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientBirthday != null" >
+        patient_birthday = #{record.patientBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.patientSex != null" >
+        patient_sex = #{record.patientSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientPhone != null" >
+        patient_phone = #{record.patientPhone,jdbcType=BIGINT},
+      </if>
+      <if test="record.patientAddress != null" >
+        patient_address = #{record.patientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientNation != null" >
+        patient_nation = #{record.patientNation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_patient
+    set patient_id = #{record.patientId,jdbcType=BIGINT},
+      patent_name = #{record.patentName,jdbcType=VARCHAR},
+      patient_password = #{record.patientPassword,jdbcType=VARCHAR},
+      patient_birthday = #{record.patientBirthday,jdbcType=TIMESTAMP},
+      patient_sex = #{record.patientSex,jdbcType=VARCHAR},
+      patient_phone = #{record.patientPhone,jdbcType=BIGINT},
+      patient_address = #{record.patientAddress,jdbcType=VARCHAR},
+      patient_nation = #{record.patientNation,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.medicalsystem.pojo.TPatient" >
+    update t_patient
+    <set >
+      <if test="patentName != null" >
+        patent_name = #{patentName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPassword != null" >
+        patient_password = #{patientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="patientBirthday != null" >
+        patient_birthday = #{patientBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="patientSex != null" >
+        patient_sex = #{patientSex,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPhone != null" >
+        patient_phone = #{patientPhone,jdbcType=BIGINT},
+      </if>
+      <if test="patientAddress != null" >
+        patient_address = #{patientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="patientNation != null" >
+        patient_nation = #{patientNation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where patient_id = #{patientId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.medicalsystem.pojo.TPatient" >
+    update t_patient
+    set patent_name = #{patentName,jdbcType=VARCHAR},
+      patient_password = #{patientPassword,jdbcType=VARCHAR},
+      patient_birthday = #{patientBirthday,jdbcType=TIMESTAMP},
+      patient_sex = #{patientSex,jdbcType=VARCHAR},
+      patient_phone = #{patientPhone,jdbcType=BIGINT},
+      patient_address = #{patientAddress,jdbcType=VARCHAR},
+      patient_nation = #{patientNation,jdbcType=VARCHAR}
+    where patient_id = #{patientId,jdbcType=BIGINT}
+  </update>
+</mapper>
