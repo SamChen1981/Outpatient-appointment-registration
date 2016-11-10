@@ -24,7 +24,7 @@
 #### (11-09)
 
 视频教学中Service的实现类要在applicationContext-service.xml中配置bean，
-现在的知可以在springmvc.xml中配置<mvc:annotion-scan package=""/>
+现在的知可以在springmvc.xml中配置><mvc:annotion-scan package=""/>
 扫描Service包，需要的仅仅是在Service接口的实现类开始加
 一个注解"@Service("ServiceIterfaceName")"这样就可以省略applicationContext-service.xml
 这个文件
