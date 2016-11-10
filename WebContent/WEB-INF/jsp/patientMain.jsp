@@ -18,6 +18,14 @@
 			document.patientForm.action="${pageContext.request.contextPath }/logout.action";
 			document.patientForm.submit();
 		}
+		function checkorder(){
+			document.patientForm.action="${pageContext.request.contextPath }/queryOrder.action?id=${patient.patientId}";
+			document.patientForm.submit();
+		}
+		function applyorder(){
+			document.patientForm.action="";
+			document.patientForm.submit();
+		}
 	</script>
 </head>
 <body>
@@ -25,7 +33,7 @@
 <div class="container">                                                                  <!--标题容器-->
 
     <div class="row">
-        <h1 align="center"><strong><font color="#8b0000">病人预约</font></strong></h1>
+        <h1 align="center"><strong><font color="#8b0000">个人信息中心</font></strong></h1>
     </div>
 
 </div>
@@ -96,10 +104,10 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
-            <button class="btn btn-primary btn-block " id="applyorder">申请预约</button>
+            <button class="btn btn-primary btn-block " onclick="applyorder()">申请预约</button>
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-primary btn-block " id="checkorder">查看预约</button>
+            <button class="btn btn-primary btn-block " onclick="checkorder()">查看预约</button>
         </div>
         <div class="col-sm-2">
             <button class="btn btn-primary btn-block " name="userLogout" onclick="logout()">登出</button>

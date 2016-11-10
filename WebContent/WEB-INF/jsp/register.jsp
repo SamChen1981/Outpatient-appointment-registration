@@ -58,7 +58,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label">密码确认</label>
         <div class="col-sm-4">
-            <input type="password" class="form-control" id="rpatientPassword"
+            <input type="password" class="form-control" name="rePassword"
                    placeholder="请再次输入密码">
         </div>
     </div>
@@ -66,7 +66,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">姓名</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientName"
+            <input type="text" class="form-control " name="patientName"
                    placeholder="请输入姓名">
         </div>
     </div>
@@ -74,8 +74,8 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">出生年月</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientBirthday"
-                   placeholder="请输入出生年月">
+            <input type="text" class="form-control " name="patientBirthday"
+                   placeholder="请输入出生年月 yyyy-mm-dd">
         </div>
     </div>
 
@@ -83,10 +83,10 @@
         <label  class="col-sm-4 control-label">性别</label>
         <div class="col-sm-4">
             <label class="checkbox-inline">
-                <input type="radio" name="patientSex" id="optionsRadios1" value="男" checked>男
+                <input type="radio" name="patientSex"  value="男" checked>男
             </label>
             <label class="checkbox-inline">
-                <input type="radio" name="patientSex" id="optionsRadios2" value="女">女
+                <input type="radio" name="patientSex"  value="女">女
             </label>
         </div>
     </div>
@@ -96,7 +96,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">联系电话</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientPhone"
+            <input type="text" class="form-control " name="patientPhone"
                    placeholder="请输入联系电话">
         </div>
     </div>
@@ -104,7 +104,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">居住地址</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientAddress"
+            <input type="text" class="form-control " name="patientAddress"
                    placeholder="请输入居住地址">
         </div>
     </div>
@@ -112,7 +112,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">民族</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientNation"
+            <input type="text" class="form-control " name="patientNation"
                    placeholder="请输入所属国籍">
         </div>
     </div>
@@ -121,11 +121,11 @@
     <div class="row">
     	<div class="col-sm-5"></div>
         <div class="col-sm-1">
-            <a href="${pageContext.request.contextPath }/login.action"class="btn btn-primary btn-lg" type="but">返回</a>
+            <a href="${pageContext.request.contextPath }/login.action" class="btn btn-primary btn-lg" type="but">返回</a>
         </div>
     
 	    <div class="col-sm-1" >
-	        <button type="submit" class="btn btn-primary btn-lg " id="register">注册</button>
+	        <button type="submit" class="btn btn-primary btn-lg ">注册</button>
 	    </div>
     </div>
 </form>

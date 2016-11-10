@@ -39,7 +39,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">身份证号码</label>
         <div class="col-sm-4">
-            <input class="form-control" id="patientId" readonly value="${patient.patientId}"/>
+            <input class="form-control" name="patientId" readonly value="${patient.patientId}"/>
 
         </div>
     </div>
@@ -71,7 +71,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">出生年月</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientBirthday"
+            <input type="text" class="form-control " name="patientBirthday"
                    value="<fmt:formatDate value="${patient.patientBirthday}" pattern="yyyy-MM-dd"/>"/>
         </div>
     </div>
@@ -80,10 +80,10 @@
         <label  class="col-sm-4 control-label">性别</label>
         <div class="col-sm-4">
             <label class="checkbox-inline">
-                <input type="radio" name="patientSex" checked/>男
+                <input type="radio" name="patientSex" value="男" checked/>男
             </label>
             <label class="checkbox-inline">
-                <input type="radio" name="patientSex"/>女
+                <input type="radio" name="patientSex" value="女"/>女
             </label>
         </div>
     </div>
@@ -93,7 +93,7 @@
     <div class="form-group">
         <label  class="col-sm-4 control-label">联系电话</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " id="patientPhone"
+            <input type="text" class="form-control " name="patientPhone"
                    value="${patient.patientPhone}">
         </div>
     </div>

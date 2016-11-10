@@ -43,6 +43,9 @@ public class LoginController {
 	 */
 	@RequestMapping("/loginPatient")
 	public String findPatient(TPatient patient,HttpSession session){
+		if(patient.getPatientId()==null){
+			return "login";
+		}
 		TPatient pa=loginService.findPatient(patient.getPatientId());
 		if(pa==null){
 			return "login";
@@ -59,6 +62,9 @@ public class LoginController {
 	 */
 	@RequestMapping("/loginStaff")
 	public String findStaff(TStaff staff,HttpSession session){
+		if(staff.getStaffId()==null){
+			return "login";
+		}
 		TStaff st=loginService.findStaff(staff.getStaffId());
 		if(st==null){
 			return "login";
@@ -75,6 +81,9 @@ public class LoginController {
 	 */
 	@RequestMapping("/register")
 	public String register(TPatient patient,HttpSession session){
+		if(patient.getPatientId()==null){
+			return "login";
+		}
 		//插入数据
 		patientService.insertPatient(patient);
 		//检查是否注册成功

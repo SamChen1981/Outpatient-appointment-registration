@@ -39,7 +39,7 @@ public class PatientController {
 	
 	@RequestMapping("/editPatientSubmit")
 	public String editSubmit(TPatient patient){
-		patientService.insertPatient(patient);
+		patientService.updatePatient(patient);
 		return "forward:patientMain.action";
 	}
 
