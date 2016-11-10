@@ -28,6 +28,16 @@ public class LoginController {
 	@Autowired
 	private PatientService patientService;
 	
+	@RequestMapping("/login")
+	public String longin(){
+		return "login";
+	}
+	
+	@RequestMapping("/showRegister")
+	public String showPage(){
+		return "register";
+	}
+	
 	/*
 	 * 病人登录功能
 	 */
@@ -38,8 +48,8 @@ public class LoginController {
 			return "login";
 		}
 		if(pa.getPatientPassword().equals(patient.getPatientPassword())){
-			session.setAttribute("patientName",pa.getPatentName());
-			return "forward:queryMyself.action";
+			session.setAttribute("patientName",pa.getPatientName());
+			return "forward:patientMain.action";
 		}
 		return "login";
 	}
@@ -72,8 +82,8 @@ public class LoginController {
 		if(tp==null){
 			return "forward:register.action";
 		}
-		session.setAttribute("patientName", patient.getPatentName());
-		return "forward:queryMyself.action";
+		session.setAttribute("patientName", patient.getPatientName());
+		return "forward:patientMain.action";
 	}
 	
 	/*

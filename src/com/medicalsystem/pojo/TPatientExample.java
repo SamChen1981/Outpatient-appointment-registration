@@ -165,73 +165,73 @@ public class TPatientExample {
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameIsNull() {
-            addCriterion("patent_name is null");
+        public Criteria andPatientNameIsNull() {
+            addCriterion("patient_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameIsNotNull() {
-            addCriterion("patent_name is not null");
+        public Criteria andPatientNameIsNotNull() {
+            addCriterion("patient_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameEqualTo(String value) {
-            addCriterion("patent_name =", value, "patentName");
+        public Criteria andPatientNameEqualTo(String value) {
+            addCriterion("patient_name =", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameNotEqualTo(String value) {
-            addCriterion("patent_name <>", value, "patentName");
+        public Criteria andPatientNameNotEqualTo(String value) {
+            addCriterion("patient_name <>", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameGreaterThan(String value) {
-            addCriterion("patent_name >", value, "patentName");
+        public Criteria andPatientNameGreaterThan(String value) {
+            addCriterion("patient_name >", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameGreaterThanOrEqualTo(String value) {
-            addCriterion("patent_name >=", value, "patentName");
+        public Criteria andPatientNameGreaterThanOrEqualTo(String value) {
+            addCriterion("patient_name >=", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameLessThan(String value) {
-            addCriterion("patent_name <", value, "patentName");
+        public Criteria andPatientNameLessThan(String value) {
+            addCriterion("patient_name <", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameLessThanOrEqualTo(String value) {
-            addCriterion("patent_name <=", value, "patentName");
+        public Criteria andPatientNameLessThanOrEqualTo(String value) {
+            addCriterion("patient_name <=", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameLike(String value) {
-            addCriterion("patent_name like", value, "patentName");
+        public Criteria andPatientNameLike(String value) {
+            addCriterion("patient_name like", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameNotLike(String value) {
-            addCriterion("patent_name not like", value, "patentName");
+        public Criteria andPatientNameNotLike(String value) {
+            addCriterion("patient_name not like", value, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameIn(List<String> values) {
-            addCriterion("patent_name in", values, "patentName");
+        public Criteria andPatientNameIn(List<String> values) {
+            addCriterion("patient_name in", values, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameNotIn(List<String> values) {
-            addCriterion("patent_name not in", values, "patentName");
+        public Criteria andPatientNameNotIn(List<String> values) {
+            addCriterion("patient_name not in", values, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameBetween(String value1, String value2) {
-            addCriterion("patent_name between", value1, value2, "patentName");
+        public Criteria andPatientNameBetween(String value1, String value2) {
+            addCriterion("patient_name between", value1, value2, "patientName");
             return (Criteria) this;
         }
 
-        public Criteria andPatentNameNotBetween(String value1, String value2) {
-            addCriterion("patent_name not between", value1, value2, "patentName");
+        public Criteria andPatientNameNotBetween(String value1, String value2) {
+            addCriterion("patient_name not between", value1, value2, "patientName");
             return (Criteria) this;
         }
 

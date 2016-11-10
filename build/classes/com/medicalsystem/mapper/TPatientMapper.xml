@@ -3,7 +3,7 @@
 <mapper namespace="com.medicalsystem.mapper.TPatientMapper" >
   <resultMap id="BaseResultMap" type="com.medicalsystem.pojo.TPatient" >
     <id column="patient_id" property="patientId" jdbcType="BIGINT" />
-    <result column="patent_name" property="patentName" jdbcType="VARCHAR" />
+    <result column="patient_name" property="patientName" jdbcType="VARCHAR" />
     <result column="patient_password" property="patientPassword" jdbcType="VARCHAR" />
     <result column="patient_birthday" property="patientBirthday" jdbcType="TIMESTAMP" />
     <result column="patient_sex" property="patientSex" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    patient_id, patent_name, patient_password, patient_birthday, patient_sex, patient_phone, 
+    patient_id, patient_name, patient_password, patient_birthday, patient_sex, patient_phone, 
     patient_address, patient_nation
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TPatientExample" >
@@ -104,10 +104,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.medicalsystem.pojo.TPatient" >
-    insert into t_patient (patient_id, patent_name, patient_password, 
+    insert into t_patient (patient_id, patient_name, patient_password, 
       patient_birthday, patient_sex, patient_phone, 
       patient_address, patient_nation)
-    values (#{patientId,jdbcType=BIGINT}, #{patentName,jdbcType=VARCHAR}, #{patientPassword,jdbcType=VARCHAR}, 
+    values (#{patientId,jdbcType=BIGINT}, #{patientName,jdbcType=VARCHAR}, #{patientPassword,jdbcType=VARCHAR}, 
       #{patientBirthday,jdbcType=TIMESTAMP}, #{patientSex,jdbcType=VARCHAR}, #{patientPhone,jdbcType=BIGINT}, 
       #{patientAddress,jdbcType=VARCHAR}, #{patientNation,jdbcType=VARCHAR})
   </insert>
@@ -117,8 +117,8 @@
       <if test="patientId != null" >
         patient_id,
       </if>
-      <if test="patentName != null" >
-        patent_name,
+      <if test="patientName != null" >
+        patient_name,
       </if>
       <if test="patientPassword != null" >
         patient_password,
@@ -143,8 +143,8 @@
       <if test="patientId != null" >
         #{patientId,jdbcType=BIGINT},
       </if>
-      <if test="patentName != null" >
-        #{patentName,jdbcType=VARCHAR},
+      <if test="patientName != null" >
+        #{patientName,jdbcType=VARCHAR},
       </if>
       <if test="patientPassword != null" >
         #{patientPassword,jdbcType=VARCHAR},
@@ -178,8 +178,8 @@
       <if test="record.patientId != null" >
         patient_id = #{record.patientId,jdbcType=BIGINT},
       </if>
-      <if test="record.patentName != null" >
-        patent_name = #{record.patentName,jdbcType=VARCHAR},
+      <if test="record.patientName != null" >
+        patient_name = #{record.patientName,jdbcType=VARCHAR},
       </if>
       <if test="record.patientPassword != null" >
         patient_password = #{record.patientPassword,jdbcType=VARCHAR},
@@ -207,7 +207,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_patient
     set patient_id = #{record.patientId,jdbcType=BIGINT},
-      patent_name = #{record.patentName,jdbcType=VARCHAR},
+      patient_name = #{record.patientName,jdbcType=VARCHAR},
       patient_password = #{record.patientPassword,jdbcType=VARCHAR},
       patient_birthday = #{record.patientBirthday,jdbcType=TIMESTAMP},
       patient_sex = #{record.patientSex,jdbcType=VARCHAR},
@@ -221,8 +221,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.medicalsystem.pojo.TPatient" >
     update t_patient
     <set >
-      <if test="patentName != null" >
-        patent_name = #{patentName,jdbcType=VARCHAR},
+      <if test="patientName != null" >
+        patient_name = #{patientName,jdbcType=VARCHAR},
       </if>
       <if test="patientPassword != null" >
         patient_password = #{patientPassword,jdbcType=VARCHAR},
@@ -247,7 +247,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.medicalsystem.pojo.TPatient" >
     update t_patient
-    set patent_name = #{patentName,jdbcType=VARCHAR},
+    set patient_name = #{patientName,jdbcType=VARCHAR},
       patient_password = #{patientPassword,jdbcType=VARCHAR},
       patient_birthday = #{patientBirthday,jdbcType=TIMESTAMP},
       patient_sex = #{patientSex,jdbcType=VARCHAR},

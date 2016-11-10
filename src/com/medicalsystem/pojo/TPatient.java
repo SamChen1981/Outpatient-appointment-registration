@@ -5,7 +5,7 @@ import java.util.Date;
 public class TPatient {
     private Long patientId;
 
-    private String patentName;
+    private String patientName;
 
     private String patientPassword;
 
@@ -27,12 +27,12 @@ public class TPatient {
         this.patientId = patientId;
     }
 
-    public String getPatentName() {
-        return patentName;
+    public String getPatientName() {
+        return patientName;
     }
 
-    public void setPatentName(String patentName) {
-        this.patentName = patentName == null ? null : patentName.trim();
+    public void setPatientName(String patientName) {
+        this.patientName = patientName == null ? null : patientName.trim();
     }
 
     public String getPatientPassword() {

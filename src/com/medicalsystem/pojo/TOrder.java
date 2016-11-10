@@ -7,6 +7,8 @@ public class TOrder {
 
     private Long patientId;
 
+    private Long costId;
+
     private Long departmentId;
 
     private Date ordertime;
@@ -25,6 +27,14 @@ public class TOrder {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
+    }
+
+    public Long getCostId() {
+        return costId;
+    }
+
+    public void setCostId(Long costId) {
+        this.costId = costId;
     }
 
     public Long getDepartmentId() {

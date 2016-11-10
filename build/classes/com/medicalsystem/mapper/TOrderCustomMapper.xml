@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medicalsystem.mapper.TOrderCustomMapper">
+	<select id="findOrderCustom" resultMap="orderCustom" parameterType="java.lang.Long">
+		SELECT
+		order_id,
+		department_name,
+		patient_name,
+		cost_price
+		FROM
+		t_order
+		LEFT JOIN t_department ON t_order.department_id =t_department.department_id
+		LEFT JOIN t_cost ON t_order.cost_id = t_cost.cost_id
+		LEFT JOIN t_patient ON t_order.patient_id = t_patient.patient_id
+		WHERE
+		t_order.patient_id =#{patientId,jdbcType=BIGINT}
+	</select>
+	
+	<resultMap type="com.medicalsystem.pojo.TOrderCustom" id="orderCustom">
+		<result column="order_id" property="orderId" jdbcType="BIGINT"/>		
+		<result column="department_name" property="departmentName" jdbcType="VARCHAR"/>		
+		<result column="patient_name" property="patientName" jdbcType="VARCHAR"/>		
+		<result column="cost_price" property="costPrice" jdbcType="BIGINT"/>		
+	</resultMap>
+</mapper>

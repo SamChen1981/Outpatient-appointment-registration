@@ -6,26 +6,33 @@ package com.medicalsystem.pojo;
  * @date 2016年11月9日上午12:04:06
  * @version 1.0
  */
-public class TOrderCustom extends TOrder{
-	private TPatient tPatient;
-	private TDepartment tDepartment;
-	private TCost tCost;
-	public TPatient gettPatient() {
-		return tPatient;
+public class TOrderCustom{
+	private Long orderId;
+	private String patientName;
+	private String departmentName;
+	private Long costPrice;
+	public Long getOrderId() {
+		return orderId;
 	}
-	public void settPatient(TPatient tPatient) {
-		this.tPatient = tPatient;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
-	public TDepartment gettDepartment() {
-		return tDepartment;
+	public String getPatientName() {
+		return patientName;
 	}
-	public void settDepartment(TDepartment tDepartment) {
-		this.tDepartment = tDepartment;
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
 	}
-	public TCost gettCost() {
-		return tCost;
+	public String getDepartmentName() {
+		return departmentName;
 	}
-	public void settCost(TCost tCost) {
-		this.tCost = tCost;
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+	public Long getCostPrice() {
+		return costPrice;
+	}
+	public void setCostPrice(Long costPrice) {
+		this.costPrice = costPrice;
 	}
 }

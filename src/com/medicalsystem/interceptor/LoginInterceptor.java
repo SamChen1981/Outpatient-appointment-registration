@@ -19,10 +19,19 @@ public class LoginInterceptor implements HandlerInterceptor {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
-
+		
 		// 获取请求URL
 		String url = request.getRequestURI();
 		if (url.indexOf("login.action") >= 0) {
+			return true;
+		}
+		if (url.indexOf("showRegister.action") >= 0) {
+			return true;
+		}
+		if (url.indexOf("loginPatient.action") >= 0) {
+			return true;
+		}
+		if (url.indexOf("loginStaff.action") >= 0) {
 			return true;
 		}
 		if (url.indexOf("register.action") >= 0) {
@@ -30,9 +39,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 
 		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("username");
+		String patientname = (String) session.getAttribute("patientName");
 
-		if (username != null) {
+		if (patientname != null) {
 			// 身份存在，放行
 			return true;
 		}
@@ -43,6 +52,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// return false表示拦截，不向下执行
 		// return true表示放行
 		return false;
+		
 	}
 	
 

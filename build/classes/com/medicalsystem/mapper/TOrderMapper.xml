@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.medicalsystem.pojo.TOrder" >
     <id column="order_id" property="orderId" jdbcType="BIGINT" />
     <result column="patient_id" property="patientId" jdbcType="BIGINT" />
+    <result column="cost_id" property="costId" jdbcType="BIGINT" />
     <result column="department_id" property="departmentId" jdbcType="BIGINT" />
     <result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    order_id, patient_id, department_id, ordertime
+    order_id, patient_id, cost_id, department_id, ordertime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TOrderExample" >
     select
@@ -99,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.medicalsystem.pojo.TOrder" >
-    insert into t_order (order_id, patient_id, department_id, 
-      ordertime)
-    values (#{orderId,jdbcType=BIGINT}, #{patientId,jdbcType=BIGINT}, #{departmentId,jdbcType=BIGINT}, 
-      #{ordertime,jdbcType=TIMESTAMP})
+    insert into t_order (order_id, patient_id, cost_id, 
+      department_id, ordertime)
+    values (#{orderId,jdbcType=BIGINT}, #{patientId,jdbcType=BIGINT}, #{costId,jdbcType=BIGINT}, 
+      #{departmentId,jdbcType=BIGINT}, #{ordertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TOrder" >
     insert into t_order
@@ -112,6 +113,9 @@
       </if>
       <if test="patientId != null" >
         patient_id,
+      </if>
+      <if test="costId != null" >
+        cost_id,
       </if>
       <if test="departmentId != null" >
         department_id,
@@ -126,6 +130,9 @@
       </if>
       <if test="patientId != null" >
         #{patientId,jdbcType=BIGINT},
+      </if>
+      <if test="costId != null" >
+        #{costId,jdbcType=BIGINT},
       </if>
       <if test="departmentId != null" >
         #{departmentId,jdbcType=BIGINT},
@@ -150,6 +157,9 @@
       <if test="record.patientId != null" >
         patient_id = #{record.patientId,jdbcType=BIGINT},
       </if>
+      <if test="record.costId != null" >
+        cost_id = #{record.costId,jdbcType=BIGINT},
+      </if>
       <if test="record.departmentId != null" >
         department_id = #{record.departmentId,jdbcType=BIGINT},
       </if>
@@ -165,6 +175,7 @@
     update t_order
     set order_id = #{record.orderId,jdbcType=BIGINT},
       patient_id = #{record.patientId,jdbcType=BIGINT},
+      cost_id = #{record.costId,jdbcType=BIGINT},
       department_id = #{record.departmentId,jdbcType=BIGINT},
       ordertime = #{record.ordertime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -176,6 +187,9 @@
     <set >
       <if test="patientId != null" >
         patient_id = #{patientId,jdbcType=BIGINT},
+      </if>
+      <if test="costId != null" >
+        cost_id = #{costId,jdbcType=BIGINT},
       </if>
       <if test="departmentId != null" >
         department_id = #{departmentId,jdbcType=BIGINT},
@@ -189,6 +203,7 @@
   <update id="updateByPrimaryKey" parameterType="com.medicalsystem.pojo.TOrder" >
     update t_order
     set patient_id = #{patientId,jdbcType=BIGINT},
+      cost_id = #{costId,jdbcType=BIGINT},
       department_id = #{departmentId,jdbcType=BIGINT},
       ordertime = #{ordertime,jdbcType=TIMESTAMP}
     where order_id = #{orderId,jdbcType=BIGINT}

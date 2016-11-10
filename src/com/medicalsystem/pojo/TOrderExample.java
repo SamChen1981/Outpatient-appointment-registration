@@ -225,6 +225,66 @@ public class TOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andCostIdIsNull() {
+            addCriterion("cost_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdIsNotNull() {
+            addCriterion("cost_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdEqualTo(Long value) {
+            addCriterion("cost_id =", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdNotEqualTo(Long value) {
+            addCriterion("cost_id <>", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdGreaterThan(Long value) {
+            addCriterion("cost_id >", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("cost_id >=", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdLessThan(Long value) {
+            addCriterion("cost_id <", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdLessThanOrEqualTo(Long value) {
+            addCriterion("cost_id <=", value, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdIn(List<Long> values) {
+            addCriterion("cost_id in", values, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdNotIn(List<Long> values) {
+            addCriterion("cost_id not in", values, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdBetween(Long value1, Long value2) {
+            addCriterion("cost_id between", value1, value2, "costId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostIdNotBetween(Long value1, Long value2) {
+            addCriterion("cost_id not between", value1, value2, "costId");
+            return (Criteria) this;
+        }
+
         public Criteria andDepartmentIdIsNull() {
             addCriterion("department_id is null");
             return (Criteria) this;

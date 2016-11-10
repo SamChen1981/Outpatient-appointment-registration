@@ -15,7 +15,7 @@ import com.medicalsystem.service.LoginService;
  * @date 2016年11月8日下午5:00:48
  * @version 1.0
  */
-@Service
+@Service("LoginService")
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
