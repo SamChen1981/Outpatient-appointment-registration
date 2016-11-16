@@ -11,6 +11,8 @@ public class TSchedul {
 
     private Date schedultime;
 
+    private Long costId;
+
     public Long getSchedulId() {
         return schedulId;
     }
@@ -41,5 +43,13 @@ public class TSchedul {
 
     public void setSchedultime(Date schedultime) {
         this.schedultime = schedultime;
+    }
+
+    public Long getCostId() {
+        return costId;
+    }
+
+    public void setCostId(Long costId) {
+        this.costId = costId;
     }
 }

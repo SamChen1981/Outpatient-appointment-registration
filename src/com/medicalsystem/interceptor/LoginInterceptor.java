@@ -22,26 +22,27 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		// 获取请求URL
 		String url = request.getRequestURI();
-		if (url.indexOf("login.action") >= 0) {
+		if (url.indexOf("login") >= 0) {
 			return true;
 		}
-		if (url.indexOf("showRegister.action") >= 0) {
+		if (url.indexOf("showRegister") >= 0) {
 			return true;
 		}
-		if (url.indexOf("loginPatient.action") >= 0) {
+		if (url.indexOf("loginPatient") >= 0) {
 			return true;
 		}
-		if (url.indexOf("loginStaff.action") >= 0) {
+		if (url.indexOf("loginStaff") >= 0) {
 			return true;
 		}
-		if (url.indexOf("register.action") >= 0) {
+		if (url.indexOf("register") >= 0) {
 			return true;
 		}
 
 		HttpSession session = request.getSession();
-		String patientname = (String) session.getAttribute("patientName");
+		Long patientId =  (Long) session.getAttribute("patientId");
+		Long staffId =(Long) session.getAttribute("staffId");
 
-		if (patientname != null) {
+		if ( patientId!= null||staffId!=null) {
 			// 身份存在，放行
 			return true;
 		}

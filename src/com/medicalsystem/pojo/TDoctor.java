@@ -7,7 +7,7 @@ public class TDoctor {
 
     private String doctorSex;
 
-    private String doctorDesc;
+    private Long doctorType;
 
     private Long departmentId;
 
@@ -35,12 +35,12 @@ public class TDoctor {
         this.doctorSex = doctorSex == null ? null : doctorSex.trim();
     }
 
-    public String getDoctorDesc() {
-        return doctorDesc;
+    public Long getDoctorType() {
+        return doctorType;
     }
 
-    public void setDoctorDesc(String doctorDesc) {
-        this.doctorDesc = doctorDesc == null ? null : doctorDesc.trim();
+    public void setDoctorType(Long doctorType) {
+        this.doctorType = doctorType;
     }
 
     public Long getDepartmentId() {

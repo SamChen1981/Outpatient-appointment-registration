@@ -256,4 +256,17 @@
       patient_nation = #{patientNation,jdbcType=VARCHAR}
     where patient_id = #{patientId,jdbcType=BIGINT}
   </update>
+  
+  <select id="findIdlikeList" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  	SELECT * FROM t_patient
+		<where>
+			<include refid="query_patientLike"/>
+		</where>
+  </select>
+  
+  <sql id="query_patientLike">
+			<if test="patientId!=null and patientId!=''">
+				patient_id like '%${patientId}%'
+			</if>
+	</sql>
 </mapper>

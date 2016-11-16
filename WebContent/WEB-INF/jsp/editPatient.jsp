@@ -35,7 +35,7 @@
 
 </div>
 
-<form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath }/editPatientSubmit.action">                                    <!--请写上调后的动作action-->
+<form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath }/editPatientSubmit">                                    <!--请写上调后的动作action-->
     <div class="form-group">
         <label  class="col-sm-4 control-label">身份证号码</label>
         <div class="col-sm-4">
@@ -47,7 +47,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label">密码</label>
         <div class="col-sm-4">
-            <input type="password" class="form-control" name="patientPassword"
+            <input type="password" class="form-control" name="patientPassword" value="${patient.patientPassword}"
                    placeholder="请输入密码"/>
         </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label">密码确认</label>
         <div class="col-sm-4">
-            <input type="password" class="form-control" name="rePassword"
+            <input type="password" class="form-control" name="rePassword" value="${patient.patientPassword}"
                    placeholder="请再次输入密码"/>
         </div>
     </div>

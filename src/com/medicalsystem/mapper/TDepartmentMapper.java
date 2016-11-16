@@ -27,4 +27,7 @@ public interface TDepartmentMapper {
     int updateByPrimaryKeySelective(TDepartment record);
 
     int updateByPrimaryKey(TDepartment record);
+    
+    List<TDepartment> selectAll();
+    
 }

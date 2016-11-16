@@ -50,6 +50,14 @@ public class PatientServiceImpl implements PatientService {
 		List<TPatient> list = patientMapper.selectByExample(example);		
 		return list;
 	}
-	
+/**
+ * 根据主键模糊查询
+ */
+	@Override
+	public List<TPatient> findIdlikeList(Long patientId) {
+		List<TPatient> list = patientMapper.findIdlikeList(patientId);
+		return list;
+	}
 
+	
 }

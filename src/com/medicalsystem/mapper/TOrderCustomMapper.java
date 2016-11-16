@@ -2,7 +2,10 @@ package com.medicalsystem.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.medicalsystem.pojo.TOrderCustom;
+import com.medicalsystem.pojo.TOrderCustomVo;
 
 /**
  * 
@@ -13,4 +16,6 @@ import com.medicalsystem.pojo.TOrderCustom;
  */
 public interface TOrderCustomMapper {
 	public List<TOrderCustom> findOrderCustom(long patientId);
+	
+	public List<TOrderCustomVo> findOrderByPatientId(@Param("patientId")Long patientId);
 }

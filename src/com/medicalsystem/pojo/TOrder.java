@@ -13,6 +13,8 @@ public class TOrder {
 
     private Date ordertime;
 
+    private Long doctorId;
+
     public Long getOrderId() {
         return orderId;
     }
@@ -51,5 +53,13 @@ public class TOrder {
 
     public void setOrdertime(Date ordertime) {
         this.ordertime = ordertime;
+    }
+
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 }

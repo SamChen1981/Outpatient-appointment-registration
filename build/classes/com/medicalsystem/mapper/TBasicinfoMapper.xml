@@ -7,6 +7,7 @@
     <result column="basic_temperature" property="basicTemperature" jdbcType="VARCHAR" />
     <result column="department_id" property="departmentId" jdbcType="BIGINT" />
     <result column="cost_id" property="costId" jdbcType="BIGINT" />
+    <result column="basic_title" property="basicTitle" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.medicalsystem.pojo.TBasicinfo" extends="BaseResultMap" >
     <result column="info" property="info" jdbcType="LONGVARCHAR" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    basic_id, basic_humidity, basic_temperature, department_id, cost_id
+    basic_id, basic_humidity, basic_temperature, department_id, cost_id, basic_title
   </sql>
   <sql id="Blob_Column_List" >
     info
@@ -125,11 +126,11 @@
   </delete>
   <insert id="insert" parameterType="com.medicalsystem.pojo.TBasicinfo" >
     insert into t_basicinfo (basic_id, basic_humidity, basic_temperature, 
-      department_id, cost_id, info
-      )
+      department_id, cost_id, basic_title, 
+      info)
     values (#{basicId,jdbcType=BIGINT}, #{basicHumidity,jdbcType=VARCHAR}, #{basicTemperature,jdbcType=VARCHAR}, 
-      #{departmentId,jdbcType=BIGINT}, #{costId,jdbcType=BIGINT}, #{info,jdbcType=LONGVARCHAR}
-      )
+      #{departmentId,jdbcType=BIGINT}, #{costId,jdbcType=BIGINT}, #{basicTitle,jdbcType=VARCHAR}, 
+      #{info,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TBasicinfo" >
     insert into t_basicinfo
@@ -148,6 +149,9 @@
       </if>
       <if test="costId != null" >
         cost_id,
+      </if>
+      <if test="basicTitle != null" >
+        basic_title,
       </if>
       <if test="info != null" >
         info,
@@ -168,6 +172,9 @@
       </if>
       <if test="costId != null" >
         #{costId,jdbcType=BIGINT},
+      </if>
+      <if test="basicTitle != null" >
+        #{basicTitle,jdbcType=VARCHAR},
       </if>
       <if test="info != null" >
         #{info,jdbcType=LONGVARCHAR},
@@ -198,6 +205,9 @@
       <if test="record.costId != null" >
         cost_id = #{record.costId,jdbcType=BIGINT},
       </if>
+      <if test="record.basicTitle != null" >
+        basic_title = #{record.basicTitle,jdbcType=VARCHAR},
+      </if>
       <if test="record.info != null" >
         info = #{record.info,jdbcType=LONGVARCHAR},
       </if>
@@ -213,6 +223,7 @@
       basic_temperature = #{record.basicTemperature,jdbcType=VARCHAR},
       department_id = #{record.departmentId,jdbcType=BIGINT},
       cost_id = #{record.costId,jdbcType=BIGINT},
+      basic_title = #{record.basicTitle,jdbcType=VARCHAR},
       info = #{record.info,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,7 +235,8 @@
       basic_humidity = #{record.basicHumidity,jdbcType=VARCHAR},
       basic_temperature = #{record.basicTemperature,jdbcType=VARCHAR},
       department_id = #{record.departmentId,jdbcType=BIGINT},
-      cost_id = #{record.costId,jdbcType=BIGINT}
+      cost_id = #{record.costId,jdbcType=BIGINT},
+      basic_title = #{record.basicTitle,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -244,6 +256,9 @@
       <if test="costId != null" >
         cost_id = #{costId,jdbcType=BIGINT},
       </if>
+      <if test="basicTitle != null" >
+        basic_title = #{basicTitle,jdbcType=VARCHAR},
+      </if>
       <if test="info != null" >
         info = #{info,jdbcType=LONGVARCHAR},
       </if>
@@ -256,6 +271,7 @@
       basic_temperature = #{basicTemperature,jdbcType=VARCHAR},
       department_id = #{departmentId,jdbcType=BIGINT},
       cost_id = #{costId,jdbcType=BIGINT},
+      basic_title = #{basicTitle,jdbcType=VARCHAR},
       info = #{info,jdbcType=LONGVARCHAR}
     where basic_id = #{basicId,jdbcType=BIGINT}
   </update>
@@ -264,7 +280,8 @@
     set basic_humidity = #{basicHumidity,jdbcType=VARCHAR},
       basic_temperature = #{basicTemperature,jdbcType=VARCHAR},
       department_id = #{departmentId,jdbcType=BIGINT},
-      cost_id = #{costId,jdbcType=BIGINT}
+      cost_id = #{costId,jdbcType=BIGINT},
+      basic_title = #{basicTitle,jdbcType=VARCHAR}
     where basic_id = #{basicId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.medicalsystem.mapper.TOrderCustomMapper;
 import com.medicalsystem.pojo.TOrderCustom;
+import com.medicalsystem.pojo.TOrderCustomVo;
 import com.medicalsystem.service.OrderCustomService;
 /**
  * 
@@ -32,4 +33,9 @@ public class OrderCustomServiceImpl implements OrderCustomService {
 
 	}
 
+	@Override
+	public List<TOrderCustomVo> findOrderByPatientId(Long patientId) {
+		List<TOrderCustomVo> list = orderCustomMapper.findOrderByPatientId(patientId);
+		return list;
+	}
 }

@@ -304,73 +304,63 @@ public class TDoctorExample {
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescIsNull() {
-            addCriterion("doctor_desc is null");
+        public Criteria andDoctorTypeIsNull() {
+            addCriterion("doctor_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescIsNotNull() {
-            addCriterion("doctor_desc is not null");
+        public Criteria andDoctorTypeIsNotNull() {
+            addCriterion("doctor_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescEqualTo(String value) {
-            addCriterion("doctor_desc =", value, "doctorDesc");
+        public Criteria andDoctorTypeEqualTo(Long value) {
+            addCriterion("doctor_type =", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescNotEqualTo(String value) {
-            addCriterion("doctor_desc <>", value, "doctorDesc");
+        public Criteria andDoctorTypeNotEqualTo(Long value) {
+            addCriterion("doctor_type <>", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescGreaterThan(String value) {
-            addCriterion("doctor_desc >", value, "doctorDesc");
+        public Criteria andDoctorTypeGreaterThan(Long value) {
+            addCriterion("doctor_type >", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescGreaterThanOrEqualTo(String value) {
-            addCriterion("doctor_desc >=", value, "doctorDesc");
+        public Criteria andDoctorTypeGreaterThanOrEqualTo(Long value) {
+            addCriterion("doctor_type >=", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescLessThan(String value) {
-            addCriterion("doctor_desc <", value, "doctorDesc");
+        public Criteria andDoctorTypeLessThan(Long value) {
+            addCriterion("doctor_type <", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescLessThanOrEqualTo(String value) {
-            addCriterion("doctor_desc <=", value, "doctorDesc");
+        public Criteria andDoctorTypeLessThanOrEqualTo(Long value) {
+            addCriterion("doctor_type <=", value, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescLike(String value) {
-            addCriterion("doctor_desc like", value, "doctorDesc");
+        public Criteria andDoctorTypeIn(List<Long> values) {
+            addCriterion("doctor_type in", values, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescNotLike(String value) {
-            addCriterion("doctor_desc not like", value, "doctorDesc");
+        public Criteria andDoctorTypeNotIn(List<Long> values) {
+            addCriterion("doctor_type not in", values, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescIn(List<String> values) {
-            addCriterion("doctor_desc in", values, "doctorDesc");
+        public Criteria andDoctorTypeBetween(Long value1, Long value2) {
+            addCriterion("doctor_type between", value1, value2, "doctorType");
             return (Criteria) this;
         }
 
-        public Criteria andDoctorDescNotIn(List<String> values) {
-            addCriterion("doctor_desc not in", values, "doctorDesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andDoctorDescBetween(String value1, String value2) {
-            addCriterion("doctor_desc between", value1, value2, "doctorDesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andDoctorDescNotBetween(String value1, String value2) {
-            addCriterion("doctor_desc not between", value1, value2, "doctorDesc");
+        public Criteria andDoctorTypeNotBetween(Long value1, Long value2) {
+            addCriterion("doctor_type not between", value1, value2, "doctorType");
             return (Criteria) this;
         }
 

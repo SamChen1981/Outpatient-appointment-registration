@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/css/bootstrap.min.css" />
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/js/jquery-1.7.2.min.js" /></script>
+	src="${pageContext.request.contextPath }/js/jquery.min.js" /></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 	
@@ -19,16 +19,34 @@
 </style>
 <script type="text/javascript">
 	function login(){
-		var sel=document.getElementById("select1");
-  		if(sel.value==1){
-			document.loginForm.action="${pageContext.request.contextPath }/loginPatient.action";
+		
+		var sel=$("#select1").val();
+  		if(sel==1){
+			document.loginForm.action="${pageContext.request.contextPath }/loginPatient";
 			document.loginForm.submit();
 		}
-		if(sel.value==2){
-			document.loginForm.action="${pageContext.request.contextPath }/loginStaff.action";
+		if(sel==2){
+			document.loginForm.action="${pageContext.request.contextPath }/loginStaff";
 			document.loginForm.submit();
 		} 
 	}
+	 function checkPatientId(id){
+	        //身份证号码不能为空,且格式为15或18位，18位时最后一位可为x或X；
+	        reg1=/(^\d{15}$)|(^\d{17}([0-9]|X|x)$)/;
+	        reg2=/^\s*$/g;
+	        if(reg1.test(id)){
+	            document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>√</font>"
+	            return true;
+	        }
+	        else{
+	            if(reg2.test(id)) {
+	                document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>×身份证号码不能为空</font>";
+	            }
+	            else{
+	                document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>×身份证格式错误</font>";
+	            }
+	        }
+	    }
 </script>
 
 </head>
@@ -67,7 +85,8 @@
     <div class="form-group">
         <label  class="col-sm-5 control-label">账号</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control " name="patientId" placeholder="请输入账号">
+            <input type="text" class="form-control " name="patientId" placeholder="请输入账号" onblur="checkPatientId(this.value)" />
+            <label id="lbPatientId"></label>
         </div>
     </div>
 
@@ -105,7 +124,9 @@
     </div>
     <div class="row">
         <div  align="center">
-            <a href="${pageContext.request.contextPath }/showRegister.action"><p><strong><font size="2" color="#cccccc">病人首次登录请注册</font></strong></p></a>
+            <a href="${pageContext.request.contextPath }/showRegister">
+            <p><font size="2" color="#cccccc">病人首次登录请注册</font></p>
+            </a>
         </div>
     </div>
 </div>

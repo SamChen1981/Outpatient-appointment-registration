@@ -9,6 +9,6 @@
 
 </head>
 <body>
-<jsp:forward page="/login.action"></jsp:forward>/c:forEach>
+<jsp:forward page="/login"></jsp:forward>/c:forEach>
 </body>
 </html>

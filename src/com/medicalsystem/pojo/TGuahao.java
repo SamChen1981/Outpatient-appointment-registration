@@ -15,6 +15,8 @@ public class TGuahao {
 
     private Date createtime;
 
+    private Long doctorId;
+
     public Long getGuahaoId() {
         return guahaoId;
     }
@@ -61,5 +63,13 @@ public class TGuahao {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 }

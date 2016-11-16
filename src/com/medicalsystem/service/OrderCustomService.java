@@ -3,6 +3,7 @@ package com.medicalsystem.service;
 import java.util.List;
 
 import com.medicalsystem.pojo.TOrderCustom;
+import com.medicalsystem.pojo.TOrderCustomVo;
 
 /**
  * 
@@ -16,4 +17,7 @@ public interface OrderCustomService {
 	public List<TOrderCustom> findOrder(long patientId);
 	
 	public void deleteOrder(long orderId);
+	
+	public List<TOrderCustomVo> findOrderByPatientId(Long patientId);
+	
 }

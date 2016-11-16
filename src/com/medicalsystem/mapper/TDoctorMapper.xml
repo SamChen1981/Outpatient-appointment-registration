@@ -5,7 +5,7 @@
     <id column="doctor_id" property="doctorId" jdbcType="BIGINT" />
     <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
     <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR" />
-    <result column="doctor_desc" property="doctorDesc" jdbcType="VARCHAR" />
+    <result column="doctor_type" property="doctorType" jdbcType="BIGINT" />
     <result column="department_id" property="departmentId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    doctor_id, doctor_name, doctor_sex, doctor_desc, department_id
+    doctor_id, doctor_name, doctor_sex, doctor_type, department_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TDoctorExample" >
     select
@@ -101,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.medicalsystem.pojo.TDoctor" >
     insert into t_doctor (doctor_id, doctor_name, doctor_sex, 
-      doctor_desc, department_id)
+      doctor_type, department_id)
     values (#{doctorId,jdbcType=BIGINT}, #{doctorName,jdbcType=VARCHAR}, #{doctorSex,jdbcType=VARCHAR}, 
-      #{doctorDesc,jdbcType=VARCHAR}, #{departmentId,jdbcType=BIGINT})
+      #{doctorType,jdbcType=BIGINT}, #{departmentId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TDoctor" >
     insert into t_doctor
@@ -117,8 +117,8 @@
       <if test="doctorSex != null" >
         doctor_sex,
       </if>
-      <if test="doctorDesc != null" >
-        doctor_desc,
+      <if test="doctorType != null" >
+        doctor_type,
       </if>
       <if test="departmentId != null" >
         department_id,
@@ -134,8 +134,8 @@
       <if test="doctorSex != null" >
         #{doctorSex,jdbcType=VARCHAR},
       </if>
-      <if test="doctorDesc != null" >
-        #{doctorDesc,jdbcType=VARCHAR},
+      <if test="doctorType != null" >
+        #{doctorType,jdbcType=BIGINT},
       </if>
       <if test="departmentId != null" >
         #{departmentId,jdbcType=BIGINT},
@@ -160,8 +160,8 @@
       <if test="record.doctorSex != null" >
         doctor_sex = #{record.doctorSex,jdbcType=VARCHAR},
       </if>
-      <if test="record.doctorDesc != null" >
-        doctor_desc = #{record.doctorDesc,jdbcType=VARCHAR},
+      <if test="record.doctorType != null" >
+        doctor_type = #{record.doctorType,jdbcType=BIGINT},
       </if>
       <if test="record.departmentId != null" >
         department_id = #{record.departmentId,jdbcType=BIGINT},
@@ -176,7 +176,7 @@
     set doctor_id = #{record.doctorId,jdbcType=BIGINT},
       doctor_name = #{record.doctorName,jdbcType=VARCHAR},
       doctor_sex = #{record.doctorSex,jdbcType=VARCHAR},
-      doctor_desc = #{record.doctorDesc,jdbcType=VARCHAR},
+      doctor_type = #{record.doctorType,jdbcType=BIGINT},
       department_id = #{record.departmentId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,8 +191,8 @@
       <if test="doctorSex != null" >
         doctor_sex = #{doctorSex,jdbcType=VARCHAR},
       </if>
-      <if test="doctorDesc != null" >
-        doctor_desc = #{doctorDesc,jdbcType=VARCHAR},
+      <if test="doctorType != null" >
+        doctor_type = #{doctorType,jdbcType=BIGINT},
       </if>
       <if test="departmentId != null" >
         department_id = #{departmentId,jdbcType=BIGINT},
@@ -204,7 +204,7 @@
     update t_doctor
     set doctor_name = #{doctorName,jdbcType=VARCHAR},
       doctor_sex = #{doctorSex,jdbcType=VARCHAR},
-      doctor_desc = #{doctorDesc,jdbcType=VARCHAR},
+      doctor_type = #{doctorType,jdbcType=BIGINT},
       department_id = #{departmentId,jdbcType=BIGINT}
     where doctor_id = #{doctorId,jdbcType=BIGINT}
   </update>

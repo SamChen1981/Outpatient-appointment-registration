@@ -161,4 +161,8 @@
     set department_name = #{departmentName,jdbcType=VARCHAR}
     where department_id = #{departmentId,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	SELECT * FROM t_department
+  </select>
 </mapper>

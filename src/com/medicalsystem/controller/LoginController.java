@@ -4,8 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.medicalsystem.pojo.TPatient;
 import com.medicalsystem.pojo.TStaff;
@@ -51,8 +54,8 @@ public class LoginController {
 			return "login";
 		}
 		if(pa.getPatientPassword().equals(patient.getPatientPassword())){
-			session.setAttribute("patientName",pa.getPatientName());
-			return "forward:patientMain.action";
+			session.setAttribute("patientId",pa.getPatientId());
+			return "forward:patientMainCon";
 		}
 		return "login";
 	}
@@ -61,7 +64,10 @@ public class LoginController {
 	 * 挂号员登录功能
 	 */
 	@RequestMapping("/loginStaff")
-	public String findStaff(TStaff staff,HttpSession session){
+	public String findStaff(@RequestParam(value="patientId") String staffId, @RequestParam(value="patientPassword") String staffPw,HttpSession session,Model model){
+		TStaff staff = new TStaff();
+		staff.setStaffId(Long.parseLong(staffId));
+		staff.setStaffPassword(staffPw);
 		if(staff.getStaffId()==null){
 			return "login";
 		}
@@ -70,8 +76,8 @@ public class LoginController {
 			return "login";
 		}
 		if(st.getStaffPassword().equals(staff.getStaffPassword())){
-			session.setAttribute("staffName", st.getStaffName());
-			return "forward:staffMain.action";
+			session.setAttribute("staffId", st.getStaffId());
+			return "staffMain";
 		}
 		return "login";
 	}
@@ -80,19 +86,24 @@ public class LoginController {
 	 * 注册功能
 	 */
 	@RequestMapping("/register")
+	@ResponseBody
 	public String register(TPatient patient,HttpSession session){
 		if(patient.getPatientId()==null){
-			return "login";
+			return "1";
 		}
-		//插入数据
-		patientService.insertPatient(patient);
-		//检查是否注册成功
+		//查重
 		TPatient tp=loginService.findPatient(patient.getPatientId());
-		if(tp==null){
-			return "forward:register.action";
+		if(tp!=null){
+			return "2";
 		}
-		session.setAttribute("patientName", patient.getPatientName());
-		return "forward:patientMain.action";
+		patientService.insertPatient(patient);
+		
+		//检查是否注册成功
+		TPatient tp1=loginService.findPatient(patient.getPatientId());
+		if(tp1==null){
+			return "3";
+		}
+		return "4";
 	}
 	
 	/*
@@ -101,7 +112,7 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String Logout(HttpSession session){
 		session.invalidate();
-		return "forward:login.action";
+		return "forward:login";
 	}
 	
 	

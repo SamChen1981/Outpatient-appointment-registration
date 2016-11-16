@@ -11,6 +11,8 @@ public class TBasicinfo {
 
     private Long costId;
 
+    private String basicTitle;
+
     private String info;
 
     public Long getBasicId() {
@@ -51,6 +53,14 @@ public class TBasicinfo {
 
     public void setCostId(Long costId) {
         this.costId = costId;
+    }
+
+    public String getBasicTitle() {
+        return basicTitle;
+    }
+
+    public void setBasicTitle(String basicTitle) {
+        this.basicTitle = basicTitle == null ? null : basicTitle.trim();
     }
 
     public String getInfo() {

@@ -6,6 +6,7 @@
     <result column="department_id" property="departmentId" jdbcType="BIGINT" />
     <result column="doctor_id" property="doctorId" jdbcType="BIGINT" />
     <result column="schedultime" property="schedultime" jdbcType="TIMESTAMP" />
+    <result column="cost_id" property="costId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    schedul_id, department_id, doctor_id, schedultime
+    schedul_id, department_id, doctor_id, schedultime, cost_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medicalsystem.pojo.TSchedulExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.medicalsystem.pojo.TSchedul" >
     insert into t_schedul (schedul_id, department_id, doctor_id, 
-      schedultime)
+      schedultime, cost_id)
     values (#{schedulId,jdbcType=BIGINT}, #{departmentId,jdbcType=BIGINT}, #{doctorId,jdbcType=BIGINT}, 
-      #{schedultime,jdbcType=TIMESTAMP})
+      #{schedultime,jdbcType=TIMESTAMP}, #{costId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.medicalsystem.pojo.TSchedul" >
     insert into t_schedul
@@ -119,6 +120,9 @@
       <if test="schedultime != null" >
         schedultime,
       </if>
+      <if test="costId != null" >
+        cost_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="schedulId != null" >
@@ -132,6 +136,9 @@
       </if>
       <if test="schedultime != null" >
         #{schedultime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="costId != null" >
+        #{costId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.schedultime != null" >
         schedultime = #{record.schedultime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.costId != null" >
+        cost_id = #{record.costId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set schedul_id = #{record.schedulId,jdbcType=BIGINT},
       department_id = #{record.departmentId,jdbcType=BIGINT},
       doctor_id = #{record.doctorId,jdbcType=BIGINT},
-      schedultime = #{record.schedultime,jdbcType=TIMESTAMP}
+      schedultime = #{record.schedultime,jdbcType=TIMESTAMP},
+      cost_id = #{record.costId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="schedultime != null" >
         schedultime = #{schedultime,jdbcType=TIMESTAMP},
       </if>
+      <if test="costId != null" >
+        cost_id = #{costId,jdbcType=BIGINT},
+      </if>
     </set>
     where schedul_id = #{schedulId,jdbcType=BIGINT}
   </update>
@@ -190,7 +204,8 @@
     update t_schedul
     set department_id = #{departmentId,jdbcType=BIGINT},
       doctor_id = #{doctorId,jdbcType=BIGINT},
-      schedultime = #{schedultime,jdbcType=TIMESTAMP}
+      schedultime = #{schedultime,jdbcType=TIMESTAMP},
+      cost_id = #{costId,jdbcType=BIGINT}
     where schedul_id = #{schedulId,jdbcType=BIGINT}
   </update>
 </mapper>

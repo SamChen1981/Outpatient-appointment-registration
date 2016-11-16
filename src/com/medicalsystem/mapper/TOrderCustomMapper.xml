@@ -5,13 +5,17 @@
 		SELECT
 		order_id,
 		department_name,
+		doctor_name,
 		patient_name,
-		cost_price
+		cost_type,
+		cost_price,
+		ordertime
 		FROM
 		t_order
-		LEFT JOIN t_department ON t_order.department_id =t_department.department_id
+		LEFT JOIN t_department ON t_order.department_id = t_department.department_id
 		LEFT JOIN t_cost ON t_order.cost_id = t_cost.cost_id
 		LEFT JOIN t_patient ON t_order.patient_id = t_patient.patient_id
+		LEFT JOIN t_doctor ON t_order.doctor_id=t_doctor.doctor_id
 		WHERE
 		t_order.patient_id =#{patientId,jdbcType=BIGINT}
 	</select>
@@ -20,6 +24,47 @@
 		<result column="order_id" property="orderId" jdbcType="BIGINT"/>		
 		<result column="department_name" property="departmentName" jdbcType="VARCHAR"/>		
 		<result column="patient_name" property="patientName" jdbcType="VARCHAR"/>		
-		<result column="cost_price" property="costPrice" jdbcType="BIGINT"/>		
+		<result column="cost_price" property="costPrice" jdbcType="BIGINT"/>
+		<result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
+		<result column="cost_type" property="costType" jdbcType="VARCHAR"/>
+		<result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="findOrderByPatientId" parameterType="java.lang.Long" resultMap="orderCustomVo">
+	SELECT
+	t_order.*, patient_name,
+	patient_sex,
+	department_name,
+	doctor_name,
+	cost_type
+	FROM
+	t_order
+	LEFT JOIN t_department ON t_department.department_id =t_order.department_id
+	LEFT JOIN t_doctor ON t_doctor.doctor_id = t_order.doctor_id
+	LEFT JOIN t_cost ON t_cost.cost_id = t_order.cost_id
+	LEFT JOIN t_patient ON t_patient.patient_id = t_order.patient_id
+	<where>
+		<include refid="query_OrderLikepatientId" />
+	</where>
+	</select>
+	
+	<sql id="query_OrderLikepatientId">
+			<if test="patientId!=null and patientId!=''">
+				t_order.patient_id LIKE '%${patientId}%'
+			</if>
+	</sql>
+	
+	<resultMap type="com.medicalsystem.pojo.TOrderCustomVo" id="orderCustomVo">
+		<result column="order_id" property="orderId" jdbcType="BIGINT"/>
+		<result column="department_id" property="departmentId" jdbcType="BIGINT"/>
+		<result column="department_name" property="departmentName" jdbcType="VARCHAR"/>		
+		<result column="patient_name" property="patientName" jdbcType="VARCHAR"/>		
+		<result column="patient_id" property="patientId" jdbcType="BIGINT"/>		
+		<result column="patient_sex" property="patientSex" jdbcType="VARCHAR"/>		
+		<result column="cost_id" property="costId" jdbcType="BIGINT"/>
+		<result column="cost_type" property="costType" jdbcType="VARCHAR"/>
+		<result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
+		<result column="doctor_id" property="doctorId" jdbcType="BIGINT"/>
+		<result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
 	</resultMap>
 </mapper>

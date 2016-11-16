@@ -27,4 +27,6 @@ public interface TPatientMapper {
     int updateByPrimaryKeySelective(TPatient record);
 
     int updateByPrimaryKey(TPatient record);
+    
+    List<TPatient> findIdlikeList(@Param("patientId")Long patientId);
 }

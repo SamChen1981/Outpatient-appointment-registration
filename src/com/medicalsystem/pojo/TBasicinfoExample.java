@@ -423,6 +423,76 @@ public class TBasicinfoExample {
             addCriterion("cost_id not between", value1, value2, "costId");
             return (Criteria) this;
         }
+
+        public Criteria andBasicTitleIsNull() {
+            addCriterion("basic_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleIsNotNull() {
+            addCriterion("basic_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleEqualTo(String value) {
+            addCriterion("basic_title =", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleNotEqualTo(String value) {
+            addCriterion("basic_title <>", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleGreaterThan(String value) {
+            addCriterion("basic_title >", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("basic_title >=", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleLessThan(String value) {
+            addCriterion("basic_title <", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleLessThanOrEqualTo(String value) {
+            addCriterion("basic_title <=", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleLike(String value) {
+            addCriterion("basic_title like", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleNotLike(String value) {
+            addCriterion("basic_title not like", value, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleIn(List<String> values) {
+            addCriterion("basic_title in", values, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleNotIn(List<String> values) {
+            addCriterion("basic_title not in", values, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleBetween(String value1, String value2) {
+            addCriterion("basic_title between", value1, value2, "basicTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicTitleNotBetween(String value1, String value2) {
+            addCriterion("basic_title not between", value1, value2, "basicTitle");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
