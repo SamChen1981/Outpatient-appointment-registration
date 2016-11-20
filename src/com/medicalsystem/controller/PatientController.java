@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.medicalsystem.mapper.TDepartmentMapper;
+import com.medicalsystem.pojo.TBasicinfo;
 import com.medicalsystem.pojo.TDepartment;
 import com.medicalsystem.pojo.TPatient;
 import com.medicalsystem.pojo.TSchedulCustom;
+import com.medicalsystem.service.BasicInfoService;
 import com.medicalsystem.service.PatientService;
 import com.medicalsystem.service.SchedulCustomService;
 
@@ -35,6 +37,8 @@ public class PatientController {
 	private SchedulCustomService schedulCustomService;
 	@Autowired
 	private TDepartmentMapper departmentMapper;
+	@Autowired
+	private BasicInfoService basicInfoService;
 	
 	@RequestMapping("/patientMainCon")
 	public ModelAndView queryPatient(ModelAndView model,HttpSession session,Long departmentId){
@@ -75,5 +79,16 @@ public class PatientController {
 		List<TSchedulCustom> list = schedulCustomService.findSchedul(dep);
 		return list;
 	}
+	/**
+	 * 病人查看公告
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/findPatientInfo")
+	 public String findAllInfo(Model model){
+		 List<TBasicinfo> list = basicInfoService.findAllInfo();
+		 model.addAttribute("InfoList",list);
+		 return "queryInfoPatient";
+	 }
 
 }

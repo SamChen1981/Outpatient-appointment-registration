@@ -36,4 +36,31 @@ public class PageController {
 	public String showGuahao(){
 		return "staffMain";
 	}
+	/**
+	 * 打开退号页面
+	 * @return
+	 */
+	@RequestMapping("/showCancelGuahao")
+	public String showCancelGuahao(){
+		return "cancelguahao";
+	}
+	
+	/**
+	 * 打开发布公告信息页面
+	 * @return
+	 */
+	@RequestMapping("/showPublishInfo")
+	public String showPublishInfo(){
+		return "info";
+	}
+	
+	@RequestMapping("/showRegister")
+	public String showPage(){
+		return "register";
+	}
+	
+	@RequestMapping("/login")
+	public String longin(){
+		return "login";
+	}
 }

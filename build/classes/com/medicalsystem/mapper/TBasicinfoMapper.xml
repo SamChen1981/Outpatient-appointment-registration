@@ -284,4 +284,10 @@
       basic_title = #{basicTitle,jdbcType=VARCHAR}
     where basic_id = #{basicId,jdbcType=BIGINT}
   </update>
+  
+  <!-- 自己增加方法 -->
+  <select id="selectAllInfo" resultMap="ResultMapWithBLOBs">
+	SELECT *
+	FROM t_basicinfo
+  </select>
 </mapper>

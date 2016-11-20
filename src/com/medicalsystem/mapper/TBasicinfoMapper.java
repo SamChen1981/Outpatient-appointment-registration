@@ -33,4 +33,6 @@ public interface TBasicinfoMapper {
     int updateByPrimaryKeyWithBLOBs(TBasicinfo record);
 
     int updateByPrimaryKey(TBasicinfo record);
+    
+    List<TBasicinfo> selectAllInfo();
 }

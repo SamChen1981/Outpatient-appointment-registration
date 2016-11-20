@@ -31,16 +31,6 @@ public class LoginController {
 	@Autowired
 	private PatientService patientService;
 	
-	@RequestMapping("/login")
-	public String longin(){
-		return "login";
-	}
-	
-	@RequestMapping("/showRegister")
-	public String showPage(){
-		return "register";
-	}
-	
 	/*
 	 * 病人登录功能
 	 */

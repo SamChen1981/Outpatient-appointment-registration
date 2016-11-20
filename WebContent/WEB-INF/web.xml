@@ -51,6 +51,7 @@ version="2.5">
 		<url-pattern>/css/*</url-pattern>
 		<url-pattern>/images/*</url-pattern>
 		<url-pattern>/fonts/*</url-pattern>
+		<url-pattern>/summernote/*</url-pattern>
 	</servlet-mapping> 
 	
 

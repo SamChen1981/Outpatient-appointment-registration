@@ -35,28 +35,6 @@
 		       $("#select2").empty();
 		});
 	});
-		
-    function test(){
-    	$('#order').modal('show');
-    	$('#order').on('shown.bs.modal', function () {
-    		/* var selval = $("#select1").val();
-    		$.ajax({
-    	       	url:"${pageContext.request.contextPath}/getDoctor",
-    	       	type:"post",
-    	       	dataType:"json",
-    	       	data:{departmentId:selval},
-    	       	success:function(data){
-    	       		for(var i=0;i<data.length;i++){
-		       			$("#select2").append("<option value="+data[i].doctorId+">"+data[i].doctorName+"</option>");
-		       		}
-    	       	},
-    				error:function(){}
-    	       }) */
-    		}); 
-    	$('#order').on('hide.bs.modal', function () {
-    		$("#select2").empty();
-            });
-    }
 </script>
 </head>
 
@@ -87,7 +65,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a onclick="test()">公告</a></li>
+                <li><a href="${pageContext.request.contextPath }/findPatientInfo">公告</a></li>
                 <li><a href="${pageContext.request.contextPath }/logout">登出</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -134,28 +112,6 @@
         </p>
     </div>
 </div> <!-- /container -->
-<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">公告</h4>
-            </div>
-            <div class="modal-body">
-           <h1>无线覆盖招标公告</h1>
-           <p></p>
-           <p>1、我中心决定对安阳地区医院无线覆盖进行竞争性谈判的方式进行采购。欢迎具有合法有效经营资格的公司参加投标。</p>
-           <p>2、有意合作的厂商请认真阅读本招标文件中的各项内容，进行必要的投标准备，并按本招标文件的要求编制投标书。</p>
-           <p>3、投标方的法定代表或代理人（代理人必须持有法人授权委托书），携带本人身份证明和相关资料，按投标方须知确定的时间、地点报名投标。</p>
-           <p>4、凡参加投标的厂商，无论投标结果如何，参加投标所发生的全部费用由投标方自行承担。</p>
-           </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">确定</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -20,6 +20,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	private TStaffMapper staffMapper;
+	
 	@Autowired
 	private TPatientMapper patientMapper;
 	

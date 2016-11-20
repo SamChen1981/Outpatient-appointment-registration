@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medicalsystem.mapper.TGuahaoCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.medicalsystem.pojo.TGuahaoCustom" >
+    <id column="guahao_id" property="guahaoId" jdbcType="BIGINT" />
+    <result column="patient_id" property="patientId" jdbcType="BIGINT" />
+    <result column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="staff_id" property="staffId" jdbcType="BIGINT" />
+    <result column="cost_id" property="costId" jdbcType="BIGINT" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="doctor_id" property="doctorId" jdbcType="BIGINT" />
+    <result column="patient_name" property="patientName" jdbcType="VARCHAR"/>
+    <result column="patient_sex" property="patientSex" jdbcType="VARCHAR"/>
+    <result column="department_name" property="departmentName" jdbcType="VARCHAR"/>
+    <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+    <result column="cost_type" property="costType" jdbcType="VARCHAR"/>
+  </resultMap>
+
+	<sql id="findGuahaoByPatientId">
+		<if test="patientId!=null and patientId!=''">
+			t_guahao.patient_id LIKE '%${patientId}%'
+		</if>
+	</sql>
+
+<select id="findGuahaoCustomList" resultMap="BaseResultMap"
+	parameterType="java.lang.Long">
+	SELECT
+	t_guahao.*, patient_name,
+	patient_sex,
+	department_name,
+	doctor_name,
+	cost_type
+	FROM
+	t_guahao
+	LEFT JOIN t_department ON t_department.department_id =
+	t_guahao.department_id
+	LEFT JOIN t_patient ON t_patient.patient_id = t_guahao.patient_id
+	LEFT JOIN t_doctor ON t_doctor.doctor_id = t_guahao.doctor_id
+	LEFT JOIN t_cost ON t_cost.cost_id = t_guahao.cost_id
+	<where>
+		<include refid="findGuahaoByPatientId"></include>
+	</where>
+</select>
+</mapper>

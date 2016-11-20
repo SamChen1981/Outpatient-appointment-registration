@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.medicalsystem.mapper.TGuahaoMapper;
 import com.medicalsystem.pojo.TGuahao;
-import com.medicalsystem.pojo.TGuahaoExample;
 import com.medicalsystem.service.GuahaoService;
 /**
  * 

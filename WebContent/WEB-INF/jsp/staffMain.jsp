@@ -14,12 +14,15 @@
 <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
+	
 	$("#select1").change(function(){
+		$("#select2").empty(); 
 		var selval = $("#select1").val();
 		$.ajax({
 	       	url:"${pageContext.request.contextPath}/selectguahao",
 	       	type:"post",
 	       	dataType:"json",
+	       	async: false,
 	       	data:{departmentId:selval},
 	       	success:function(data){
 	       		for(var i=0;i<data.length;i++){
@@ -30,32 +33,54 @@ $(document).ready(function(){
 	       			 }
 	       			$("#select4").val(nowdate);
 	       		}
-	       		$("#select2").change(function(){
-	       			var s2 = $("#select2").val();
-	       			$.ajax({
-	       		       	url:"${pageContext.request.contextPath}/findDoctor",
-	       		       	type:"post",
-	       		       	dataType:"json",
-	       		       	data:{doctorId:s2},
-	       		       	success:function(data){
-	       		       		var hb=data.doctorType;
-	       		       		if(hb==1){
-	       		       			$("#select3").val("专家");
-	       		       			$("#select6").val(hb);
-	       		       			}
-	       		       		else if(hb==2){
-	       		       			$("#select3").val("普通");
-	       		       			$("#select6").val(hb);
-	       		       			}
-	       					},
-	       					error:function(){}
-	       		       })
-	       		});
+	       		var s2 = $("#select2").val();
+	       		$.ajax({
+			       	url:"${pageContext.request.contextPath}/findDoctor",
+			       	type:"post",
+			       	async: false,
+			       	dataType:"json",
+			       	data:{doctorId:s2},
+			       	success:function(data){
+			       		var hb=data.doctorType;
+			       		if(hb==1){
+			       			$("#select3").val("专家");
+			       			$("#select6").val(hb);
+			       			}
+			       		else if(hb==2){
+			       			$("#select3").val("普通");
+			       			$("#select6").val(hb);
+			       			}
+						},
+						error:function(){}
+			       });
 				},
 				error:function(){}
 	       })
-	       $("#select2").empty();
+	       
 	});
+	
+	$("body").on('change','#select2',function(){
+			var s2 = $("#select2").val();
+			$.ajax({
+		       	url:"${pageContext.request.contextPath}/findDoctor",
+		       	type:"post",
+		     	
+		       	dataType:"json",
+		       	data:{doctorId:s2},
+		       	success:function(data){
+		       		var hb=data.doctorType;
+		       		if(hb==1){
+		       			$("#select3").val("专家");
+		       			$("#select6").val(hb);
+		       			}
+		       		else if(hb==2){
+		       			$("#select3").val("普通");
+		       			$("#select6").val(hb);
+		       			}
+					},
+					error:function(){}
+		       });
+		}); 
 });
 	function queryId(){
 		document.queryIdForm.action="${pageContext.request.contextPath }/findPatientLike";
@@ -107,10 +132,16 @@ $(document).ready(function(){
             <ul class="nav navbar-nav">
                 <li class="active"><a href="showGuahao">挂号操作</a></li>
                 <li><a href="${pageContext.request.contextPath }/showDealWithOrder">待处理预约</a></li>
-                <li><a href="#about3">退号</a></li>
+                <li><a href="${pageContext.request.contextPath }/showCancelGuahao">退号</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">公告</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">公告 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${pageContext.request.contextPath }/findAllInfo">查看公告</a></li>
+                        <li><a href="${pageContext.request.contextPath }/showPublishInfo">发布公告</a></li>
+                    </ul>
+                </li>
                 <li><a href="${pageContext.request.contextPath }/logout">登出</a></li>
             </ul>
         </div><!--/.nav-collapse -->

@@ -79,9 +79,12 @@
 	       	success:function(data){
 	       		if(data==1){
 	       			alert("挂号成功");
+	       			location.reload(true);
 	       		}else{
 	       			alert("挂号失败");
+	       			location.reload(true);
 	       		}
+	       		
 	       	},
 				error:function(){}
 	       })
@@ -107,10 +110,16 @@
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath }/showGuahao">挂号操作</a></li>
                 <li class="active"><a href="${pageContext.request.contextPath }/showDealWithOrder">待处理预约</a></li>
-                <li><a href="#about3">退号</a></li>
+                <li><a href="${pageContext.request.contextPath }/showCancelGuahao">退号</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">公告</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">公告 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${pageContext.request.contextPath }/findAllInfo">查看公告</a></li>
+                        <li><a href="${pageContext.request.contextPath }/showPublishInfo">发布公告</a></li>
+                    </ul>
+                </li>
                 <li><a href="${pageContext.request.contextPath }/logout">登出</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -165,18 +174,20 @@
                         <td><button type="button" class="btn btn-primary btn-block" onclick="guahao('${el.patientId}')">进行挂号</button></td>
                 </tr>
                 </c:forEach> --%>
-                <c:if test="${oList.patientId !=null}">
+                <%-- <c:if test="${oList.patientId !=null}"> --%>
+                <c:forEach var="el" items="${oList}">
                 <tr>
-                        <td>${oList.patientId}</td>             <!-- patientID-->
-                        <td>${oList.patientName}</td>                         <!-- patientName-->
-                        <td>${oList.patientSex}</td>                             <!-- patientSex-->
-                        <td>${oList.departmentName}</td>
-                        <td>${oList.doctorName}</td>                  <!-- patientDepartment-->
-                        <td>${oList.costType}</td>                          <!-- cost-->
+                        <td>${el.patientId}</td>             <!-- patientID-->
+                        <td>${el.patientName}</td>                         <!-- patientName-->
+                        <td>${el.patientSex}</td>                             <!-- patientSex-->
+                        <td>${el.departmentName}</td>
+                        <td>${el.doctorName}</td>                  <!-- patientDepartment-->
+                        <td>${el.costType}</td>                          <!-- cost-->
                         <td><button type="button" class="btn btn-primary btn-block" 
-                        onclick="guahao('${oList.patientId}','${oList.patientName}','${oList.departmentId}','${oList.departmentName}','${oList.doctorId}','${oList.doctorName}','${oList.costId}','${oList.costType}','${oList.ordertime}','${oList.orderId}')">进行挂号</button></td>
+                        onclick="guahao('${el.patientId}','${el.patientName}','${el.departmentId}','${el.departmentName}','${el.doctorId}','${el.doctorName}','${el.costId}','${el.costType}','${el.ordertime}','${el.orderId}')">进行挂号</button></td>
                 </tr>
-                </c:if>
+                </c:forEach>
+                <%-- </c:if> --%>
                 </tbody>
             </table>
         </div>
