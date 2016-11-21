@@ -46,6 +46,12 @@ public class OrderController {
 	@Autowired
 	private TDepartmentMapper departmentMapper;
 	
+	/**
+	 * 根据病人ID查找预约信息
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/queryOrderList")
 	public String queryOrderList(Model model,HttpSession session){
 		Long patientId = (Long) session.getAttribute("patientId");
@@ -54,7 +60,7 @@ public class OrderController {
 		return "queryOrder";
 	}
 	/*
-	 * 展示预约
+	 * 展示预约科室
 	 */
 	@RequestMapping("/showApplyOrder")
 	public String showApplyOrder(Model model){
@@ -63,6 +69,13 @@ public class OrderController {
 		return "applyOrder";
 	}
 	
+	/**
+	 * 预约
+	 * @param order
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/submitOrder")
 	public String submitOrder(TOrder order,HttpSession session,Model model){
 		orderService.insertOrder(order);
@@ -76,12 +89,20 @@ public class OrderController {
 		return "patientMain";
 	}
 	
+	/**
+	 * 撤销预约
+	 * @param orderId
+	 */
 	@RequestMapping("/deleteOrder")
 	@ResponseBody
 	public void deleteOrder(Long orderId){
 		orderService.deleteOrder(orderId);
 	}
 	
+	/**
+	 * 预约页面返回按钮
+	 * @return
+	 */
 	@RequestMapping("/returnPa")
 	public String returnPa() {
 		return "forward:patientMainCon";

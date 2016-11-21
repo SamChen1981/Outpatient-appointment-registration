@@ -20,11 +20,14 @@
 			data:{"basicId":basicId},
 			success:function(data){
 				$("#p1").text(data.basicTitle);
-				$("#p2").text(data.info);
+				$("#p2").append(data.info);
 			},
 			error:function(){}
 		});
 		$('#Info').modal('show');
+		$('#Info').on('hidden.bs.modal', function (e) {
+			$("#p2").empty();
+			})
 	}
 </script>
 </head>
@@ -43,7 +46,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a>个人信息预览</a></li>
+                <li><a href="/medicalsystem/patientMainCon">个人信息预览</a></li>
                 <li><a href="/medicalsystem/queryOrderList">查看预约</a></li>
                 <li><a href="/medicalsystem/showApplyOrder">预约</a></li>
                 <li class="dropdown">
@@ -54,7 +57,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${pageContext.request.contextPath }/findPatientInfo">公告</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath }/findPatientInfo">公告</a></li>
                 <li><a href="${pageContext.request.contextPath }/logout">登出</a></li>
             </ul>
         </div><!--/.nav-collapse -->

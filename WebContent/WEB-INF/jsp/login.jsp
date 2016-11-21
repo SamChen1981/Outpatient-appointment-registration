@@ -32,7 +32,7 @@
 	}
 	 function checkPatientId(id){
 	        //身份证号码不能为空,且格式为15或18位，18位时最后一位可为x或X；
-	        reg1=/(^\d{15}$)|(^\d{17}([0-9]|X|x)$)/;
+	        reg1=/(^\d{10}$)|(^\d{17}([0-9]|X|x)$)/;
 	        reg2=/^\s*$/g;
 	        if(reg1.test(id)){
 	            document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>√</font>"

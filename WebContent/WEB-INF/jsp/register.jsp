@@ -11,6 +11,82 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 <title>病人信息中心</title>
+<script type="text/javascript">
+function checkPatientId(patientid){
+    //身份证号码不能为空,且格式为15或18位，18位时最后一位可为x或X；
+    reg1=/(^\d{15}$)|(^\d{17}([0-9]|X|x)$)/;
+    reg2=/^\s*$/g;
+    if(reg1.test(patientid)){
+        document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>√</font>"
+    }
+    else{
+        if(reg2.test(patientid)) {
+            document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>×身份证号码不能为空</font>";
+        }
+        else{
+            document.getElementById("lbPatientId").innerHTML="<font color='red' size='2'>×身份证格式错误</font>";
+        }
+    }
+}
+
+
+function checkPatientPassword(patientpassword){
+    //密码不少于6位不多于16位；
+    reg1=/^[0-9A-Za-z]{6,16}$/;
+    reg2=/^[0-9A-Za-z]{17,}$/;
+    reg3=/^[0-9A-Za-z]{1,5}$/;
+    reg4=/^\s*$/g;
+    if(reg1.test(patientpassword)){
+        document.getElementById("lbPatientPassword").innerHTML="<font color='red' size='2'>√</font>"
+    }
+    else{
+        if(reg2.test(patientpassword)) {
+            document.getElementById("lbPatientPassword").innerHTML="<font color='red' size='2'>×密码长度不能超过16位</font>";
+        }
+        else if(reg3.test(patientpassword)){
+            document.getElementById("lbPatientPassword").innerHTML="<font color='red' size='2'>×密码长度不能少于6位</font>";
+        }
+        else if(reg4.test(patientpassword)){
+            document.getElementById("lbPatientPassword").innerHTML="<font color='red' size='2'>×密码不能为空</font>";
+        }
+        else{
+            document.getElementById("lbPatientPassword").innerHTML="<font color='red' size='2'>×请检查密码中是否带有特殊符号</font>";
+        }
+    }
+}
+
+
+
+function checkPatientPasswordSame(rpatientpassword){
+    //密码确认与密码相同
+    var password=document.getElementById("pwd").value;
+    reg1=/^\s*$/g;
+    if(reg1.test(rpatientpassword)){
+        document.getElementById("lbPatientPasswordSame").innerHTML="<font color='red' size='2'>×不能为空</font>";
+    }
+    else{
+        if(rpatientpassword==password){
+            document.getElementById("lbPatientPasswordSame").innerHTML="<font color='red' size='2'>√</font>"
+        }
+        else{
+            document.getElementById("lbPatientPasswordSame").innerHTML="<font color='red' size='2'>密码需一致</font>"
+        }
+    }
+}
+
+
+function checkPatientName(patientname){
+    //身份证号码不能为空,且格式为15或18位，18位时最后一位可为x或X；
+    reg1=/^\s*$/g;
+    if(reg1.test(patientname)){
+        document.getElementById("lbPatientName").innerHTML="<font color='red' size='2'>×姓名不能为空</font>";
+    }
+    else{
+        document.getElementById("lbPatientName").innerHTML="<font color='red' size='2'>√</font>"
+        }
+}
+
+</script>
 </head>
 <body>
 
@@ -43,15 +119,21 @@
         <label  class="col-sm-4 control-label">身份证号码</label>
         <div class="col-sm-4">
             <input type="text" class="form-control " name="patientId"
-                   placeholder="请输入身份证号码">
+                   placeholder="请输入身份证号码" onblur="checkPatientId(this.value)">
+        </div>
+         <div class="col-sm-4">
+            <label id="lbPatientId"></label>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-4 control-label">密码</label>
         <div class="col-sm-4">
-            <input type="password" class="form-control" name="patientPassword"
-                   placeholder="请输入密码">
+            <input type="password" class="form-control" name="patientPassword" id="pwd"
+                   placeholder="请输入密码" onblur="checkPatientPassword(this.value)">
+        </div>
+         <div class="col-sm-4">
+            <label id="lbPatientPassword"></label>
         </div>
     </div>
 
@@ -59,7 +141,10 @@
         <label class="col-sm-4 control-label">密码确认</label>
         <div class="col-sm-4">
             <input type="password" class="form-control" name="rePassword"
-                   placeholder="请再次输入密码">
+                   placeholder="请再次输入密码" onblur="checkPatientPasswordSame(this.value)">
+        </div>
+        <div class="col-sm-4">
+            <label id="lbPatientPasswordSame"></label>
         </div>
     </div>
 
@@ -67,7 +152,10 @@
         <label  class="col-sm-4 control-label">姓名</label>
         <div class="col-sm-4">
             <input type="text" class="form-control " name="patientName"
-                   placeholder="请输入姓名">
+                   placeholder="请输入姓名" onblur="checkPatientName(this.value)">
+        </div>
+        <div class="col-sm-4">
+            <label id="lbPatientName"></label>
         </div>
     </div>
 
@@ -75,7 +163,7 @@
         <label  class="col-sm-4 control-label">出生年月</label>
         <div class="col-sm-4">
             <input type="text" class="form-control " name="patientBirthday"
-                   placeholder="请输入出生年月 yyyy-mm-dd">
+                   placeholder="请输入出生年月 yyyy-MM-dd">
         </div>
     </div>
 
